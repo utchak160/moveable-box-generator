@@ -1,0 +1,23 @@
+.movable-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .sprite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    background: red;
+    position: relative;
+    transition: 0.1s linear;
+  }
+
+  .active-sprite {
+    background-color: lightgreen;
+  }
+}
