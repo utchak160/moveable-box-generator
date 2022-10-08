@@ -5,6 +5,16 @@
     <button *ngIf="keyboardControl" (click)="toggleKeyboardControl()">Switch Off Keyboard Control</button>
     <button *ngIf="!keyboardControl" (click)="toggleKeyboardControl()">Switch On Keyboard Control</button>
   </div>
+  <div class="movable-box__box-legends">
+    <div class="legend">
+      <div class="green-box"></div>
+      <p>Active Box</p>
+    </div>
+    <div class="legend">
+      <div class="red-box"></div>
+      <p>Inactive Box</p>
+    </div>
+  </div>
   <p *ngIf="!keyboardControl">Keyboard Controls are Off</p>
   <div class="box" [ngClass]="!keyboardControl ? 'inactive-box' : ''">
     <div #sprites class="sprite" [ngClass]="activeBox == box.id ? 'active-sprite' : ''" *ngFor="let box of boxes" style="left: 0; top: 0; position: absolute" (click)="activateBox(box.id)" id="{{ box.id }}">{{ box.zIndex }}</div>

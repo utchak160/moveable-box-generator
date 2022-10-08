@@ -8,7 +8,7 @@
 
   &__btn-container {
     display: flex;
-    margin: 2% 0;
+    margin: 1% 0;
 
     > *:not(:last-child) {
       margin-right: 2rem;
@@ -24,6 +24,34 @@
     }
   }
 
+  &__box-legends {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1% 0;
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 1rem;
+
+      .green-box {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+        background: lightgreen;
+      }
+
+      .red-box {
+        width: 25px;
+        height: 25px;
+        margin-right: 5px;
+        background: red;
+      }
+    }
+  }
+
   .box {
     border: 2px solid black;
     width: 700px;
@@ -33,7 +61,8 @@
   }
 
   .inactive-box {
-    //background-color: lightgray;
+    background-color: lightgrey;
+    cursor: not-allowed;
     filter: blur(3px);
     display: flex;
     justify-content: center;
