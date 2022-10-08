@@ -19,6 +19,7 @@ export class AppComponent implements AfterViewInit {
   title = 'flytbase-assignment';
   speed = 25;
   zIndexCount = 1;
+  keyboardControl = true;
   boxes = [
     { id: shortid.generate(), left: 0, right: 0, zIndex: this.zIndexCount },
   ];
@@ -30,7 +31,9 @@ export class AppComponent implements AfterViewInit {
   @HostListener('window:keydown', ['$event'])
   handleKeydownEvent(event: KeyboardEvent) {
     console.log(event.key);
-    this.handleMovement(event);
+    if (this.keyboardControl) {
+      this.handleMovement(event);
+    }
   }
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
@@ -57,7 +60,7 @@ export class AppComponent implements AfterViewInit {
         break;
       case 'd':
       case 'ArrowRight':
-        if (left >= 775) return this.renderer.setStyle(this.spriteRef?.nativeElement, 'left', 775);
+        if (left >= 675) return this.renderer.setStyle(this.spriteRef?.nativeElement, 'left', 675);
         this.renderer.setStyle(this.spriteRef?.nativeElement, 'left', left + this.speed + 'px');
         break;
       case 'w':
@@ -67,9 +70,12 @@ export class AppComponent implements AfterViewInit {
         break;
       case 's':
       case 'ArrowDown':
-        if (top >= 775) return this.renderer.setStyle(this.spriteRef?.nativeElement, 'top', 775);
+        if (top >= 675) return this.renderer.setStyle(this.spriteRef?.nativeElement, 'top', 675);
         this.renderer.setStyle(this.spriteRef?.nativeElement, 'top', top + this.speed + 'px');
         break;
+      case 'Delete':
+      case 'Backspace':
+        this.deleteBox(this.activeBox);
     }
   };
 
@@ -89,5 +95,13 @@ export class AppComponent implements AfterViewInit {
         this.activeBox = id;
       }
     });
+  }
+
+  deleteBox(id: string) {
+    this.boxes = this.boxes.filter((box) => box.id != id);
+  }
+
+  toggleKeyboardControl() {
+    this.keyboardControl = !this.keyboardControl;
   }
 }

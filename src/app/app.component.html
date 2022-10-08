@@ -1,6 +1,11 @@
 <div class="movable-box">
-  <div #box id="box" style="border: 2px solid black; width: 800px; height: 800px; position: relative">
+  <h1 class="movable-box__heading">Moveable Box Generator</h1>
+  <div class="movable-box__btn-container">
+    <button class="add-btn" (click)="addBox()">+ Add a box</button>
+    <button class="toggle-btn" *ngIf="keyboardControl" (click)="toggleKeyboardControl()">Switch Off Keyboard Control</button>
+    <button class="toggle-btn" *ngIf="!keyboardControl" (click)="toggleKeyboardControl()">Switch On Keyboard Control</button>
+  </div>
+  <div #box id="box" style="border: 2px solid black; width: 700px; height: 700px; position: relative">
     <div #sprites class="sprite" [ngClass]="activeBox == box.id ? 'active-sprite' : ''" *ngFor="let box of boxes" style="left: 0; top: 0; position: absolute" (click)="activateBox(box.id)" id="{{ box.id }}">{{ box.zIndex }}</div>
   </div>
-  <button (click)="addBox()">Add a box</button>
 </div>
