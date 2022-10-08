@@ -1,7 +1,6 @@
 import {
   Component,
   ElementRef,
-  ViewChild,
   Renderer2,
   AfterViewInit,
   HostListener,
@@ -24,7 +23,6 @@ export class AppComponent implements AfterViewInit {
     { id: shortid.generate(), left: 0, right: 0, zIndex: this.zIndexCount },
   ];
   activeBox = this.boxes[0].id;
-  @ViewChild('box') boxRef: ElementRef | undefined;
   @ViewChildren('sprites', { read: ViewContainerRef }) spritesRef: QueryList<ViewContainerRef> | undefined;
   spriteRef: ElementRef | undefined;
 
@@ -36,7 +34,7 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2) {}
 
   ngAfterViewInit() {
     this.spritesRef?.forEach((vcr, index) => {
@@ -44,13 +42,13 @@ export class AppComponent implements AfterViewInit {
     });
   }
 
-  toNum(pxVal: string) {
+  convertToInt(pxVal: string) {
     return parseInt(pxVal, 10);
   };
 
   handleMovement(e: KeyboardEvent) {
-    const left = this.toNum(this.spriteRef?.nativeElement.style.left);
-    const top = this.toNum(this.spriteRef?.nativeElement.style.top);
+    const left = this.convertToInt(this.spriteRef?.nativeElement.style.left);
+    const top = this.convertToInt(this.spriteRef?.nativeElement.style.top);
 
     switch (e.key) {
       case 'a':
