@@ -4,6 +4,10 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 https://user-images.githubusercontent.com/54145535/194759568-804cb980-9f6a-4111-81b7-85aaff7b924b.mov
 
+## Live Demo
+
+You can see the demo [here](https://moveable-box-generator.vercel.app/).
+
 ## Development server
 
 1. Install [Angular CLI](https://github.com/angular/angular-cli) if not installed yet on your local system.
