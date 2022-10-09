@@ -49,7 +49,7 @@ export class AppComponent implements AfterViewInit {
   handleMovement(e: KeyboardEvent) {
     const left = this.convertToInt(this.spriteRef?.nativeElement.style.left);
     const top = this.convertToInt(this.spriteRef?.nativeElement.style.top);
-
+    console.log(left, top);
     switch (e.key) {
       case 'a':
       case 'ArrowLeft':
@@ -58,7 +58,7 @@ export class AppComponent implements AfterViewInit {
         break;
       case 'd':
       case 'ArrowRight':
-        if (left >= 675) return this.renderer.setStyle(this.spriteRef?.nativeElement, 'left', 675);
+        if (left >= 375) return this.renderer.setStyle(this.spriteRef?.nativeElement, 'left', 375);
         this.renderer.setStyle(this.spriteRef?.nativeElement, 'left', left + this.speed + 'px');
         break;
       case 'w':
@@ -68,7 +68,7 @@ export class AppComponent implements AfterViewInit {
         break;
       case 's':
       case 'ArrowDown':
-        if (top >= 675) return this.renderer.setStyle(this.spriteRef?.nativeElement, 'top', 675);
+        if (top >= 375) return this.renderer.setStyle(this.spriteRef?.nativeElement, 'top', 375);
         this.renderer.setStyle(this.spriteRef?.nativeElement, 'top', top + this.speed + 'px');
         break;
       case 'Delete':
