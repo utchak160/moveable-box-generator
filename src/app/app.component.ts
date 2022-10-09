@@ -28,7 +28,6 @@ export class AppComponent implements AfterViewInit {
 
   @HostListener('window:keydown', ['$event'])
   handleKeydownEvent(event: KeyboardEvent) {
-    console.log(event.key);
     if (this.keyboardControl) {
       this.handleMovement(event);
     }
@@ -49,7 +48,6 @@ export class AppComponent implements AfterViewInit {
   handleMovement(e: KeyboardEvent) {
     const left = this.convertToInt(this.spriteRef?.nativeElement.style.left);
     const top = this.convertToInt(this.spriteRef?.nativeElement.style.top);
-    console.log(left, top);
     switch (e.key) {
       case 'a':
       case 'ArrowLeft':
@@ -85,9 +83,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   activateBox(id: string) {
-    console.log(id);
     this.spritesRef?.forEach((vcr, index) => {
-      console.log(vcr.element.nativeElement.id);
       if (vcr.element.nativeElement.id == id) {
         this.spriteRef = vcr.element;
         this.activeBox = id;
