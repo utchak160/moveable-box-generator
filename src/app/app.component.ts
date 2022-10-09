@@ -97,6 +97,9 @@ export class AppComponent implements AfterViewInit {
 
   deleteBox(id: string) {
     this.boxes = this.boxes.filter((box) => box.id != id);
+    if (this.boxes.length === 0) {
+      this.zIndexCount = 0;
+    }
   }
 
   toggleKeyboardControl() {
